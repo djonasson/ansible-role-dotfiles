@@ -5,4 +5,4 @@ version: master
 accept_hostkey: false
 
 installation_dir: "~"
-username: ""
+username: "root"
