@@ -18,8 +18,8 @@
   ansible.builtin.file:
     src: "{{ dest }}/{{ item }}"
     dest: "{{ installation_dir }}/{{ item }}"
-    owner: "{{ user }}"
-    group: "{{ user }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
     mode: 0644
     state: link
   with_items: "{{ dotfiles_list.stdout_lines }}"
