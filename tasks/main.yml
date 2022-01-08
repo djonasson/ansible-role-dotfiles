@@ -13,6 +13,7 @@
   register: dotfiles_list
   become: true
   become_user: "{{ username }}"
+  changed_when: false
 
 - name: Create symlinks for dotfiles.
   ansible.builtin.file:
