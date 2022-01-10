@@ -5,6 +5,7 @@
     dest: "{{ dest }}"
     version: "{{ version }}"
     accept_hostkey: "{{ accept_hostkey }}"
+    force: true
   become: true
   become_user: "{{ username }}"
 
@@ -23,6 +24,7 @@
     group: "{{ username }}"
     mode: 0644
     state: link
+    force: true
   with_items: "{{ dotfiles_list.stdout_lines }}"
   when:
     - item != "."
