@@ -17,7 +17,6 @@ The role variables are defined in `defaults/main.yml` with these defaults:
     version: master
     accept_hostkey: false
     installation_dir: "~"
-    username: "root"
 
 ## Dependencies
 
@@ -28,7 +27,6 @@ None
     - hosts: localhost
       roles:
         - role: djonasson.dotfiles
-          username: "daniel"
 
 ## License
 

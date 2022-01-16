@@ -5,23 +5,18 @@
     dest: "{{ dest }}"
     version: "{{ version }}"
     accept_hostkey: "{{ accept_hostkey }}"
-    force: true
-  become: true
-  become_user: "{{ username }}"
+  become: false
 
 - name: Get the list of dotfiles from the installation directory.
   shell: "ls -dA {{ dest }}/.* | xargs -n 1 basename"
   register: dotfiles_list
-  become: true
-  become_user: "{{ username }}"
+  become: false
   changed_when: false
 
 - name: Create symlinks for dotfiles.
   ansible.builtin.file:
     src: "{{ dest }}/{{ item }}"
     dest: "{{ installation_dir }}/{{ item }}"
-    owner: "{{ username }}"
-    group: "{{ username }}"
     mode: 0644
     state: link
     force: true
