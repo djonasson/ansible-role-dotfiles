@@ -41,8 +41,9 @@ jobs:
     strategy:
       matrix:
         distro:
-          - geerlingguy/docker-ubuntu2004-ansible:latest
+          - danjo620/docker-ubuntu2204-ansible:latest
           - danjo620/docker-ubuntu2104-ansible:latest
+          - geerlingguy/docker-ubuntu2004-ansible:latest
 
     steps:
       - name: Check out the codebase.
