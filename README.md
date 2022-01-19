@@ -5,6 +5,8 @@
 
 Ansible role for installing dotfiles from a git repository.
 
+The git repository is cloned into `dest` and symlinks, one for each dotfile, are added in `installation_dir`.
+
 ## Requirements
 
 Requires `git` on the managed machine.
