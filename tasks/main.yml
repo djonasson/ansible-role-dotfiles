@@ -1,14 +1,32 @@
 ---
+- name: Check if the dotfiles directory exist
+  ansible.builtin.stat:
+    path: "{{ dest }}"
+  register: d
+
 - name: Clone dotfiles git repository.
-  git:
+  ansible.builtin.git:
     repo: "{{ repo }}"
     dest: "{{ dest }}"
     version: "{{ version }}"
     accept_hostkey: "{{ accept_hostkey }}"
   become: false
+  when: d.stat.isdir is not defined
+
+- name: Update dotfiles git repository.
+  ansible.builtin.git:
+    repo: "{{ repo }}"
+    dest: "{{ dest }}"
+    version: "{{ version }}"
+    accept_hostkey: "{{ accept_hostkey }}"
+    update: true
+    clone: false
+    force: true
+  become: false
+  when: d.stat.isdir is defined and d.stat.isdir
 
 - name: Get the list of dotfiles from the installation directory.
-  shell: "ls -dA {{ dest }}/.* | xargs -n 1 basename"
+  ansible.builtin.shell: "ls -dA {{ dest }}/.* | xargs -n 1 basename"
   register: dotfiles_list
   become: false
   changed_when: false
