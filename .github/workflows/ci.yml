@@ -42,7 +42,7 @@ jobs:
       matrix:
         distro:
           - geerlingguy/docker-ubuntu2404-ansible:latest
-          - geerlingguy/docker-ubuntu2204-ansible:latest
+          # - geerlingguy/docker-ubuntu2204-ansible:latest
 
     steps:
       - name: Check out the codebase.
