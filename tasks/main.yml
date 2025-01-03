@@ -26,7 +26,9 @@
   when: d.stat.isdir is defined and d.stat.isdir
 
 - name: Get the list of dotfiles from the installation directory.
-  ansible.builtin.shell: "ls -dA {{ dest }}/.* | xargs -n 1 basename"
+  ansible.builtin.shell:
+    cmd: "set -o pipefail && ls -dA {{ dest }}/.* | xargs -n 1 basename"
+    executable: /bin/bash
   register: dotfiles_list
   become: false
   changed_when: false
