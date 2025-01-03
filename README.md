@@ -17,7 +17,7 @@ The role variables are defined in `defaults/main.yml` with these defaults:
 
     repo: "https://github.com/djonasson/dotfiles.git"
     dest: "~/.dotfiles"
-    version: master
+    version: main
     accept_hostkey: false
     installation_dir: "~"
 
